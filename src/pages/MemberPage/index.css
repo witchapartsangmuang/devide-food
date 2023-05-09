@@ -1,0 +1,25 @@
+.member-page {
+    width: 95%;
+}
+
+.member-page>.ant-card-body {
+    padding: 10px !important;
+}
+
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.width100 {
+    width: 100%;
+}
+.height100 {
+    height: 100%;
+}
+
+.text-align-center {
+    text-align: center;
+}
+.member-Tag {
+    padding-top: 5px;
+}

@@ -1,0 +1,22 @@
+.padding-5 {
+    padding: 5px;
+}
+.width100 {
+    width: 100%;
+}
+.height100 {
+    height: 100%;
+}
+.Col-member-Tag {
+    height: 35px;
+    padding: 1px;
+}
+.text-align-center {
+    text-align: center;
+}
+.member-Tag {
+    padding-top: 5px;
+}
+.Tag-selected {
+    border-color: red !important;
+}

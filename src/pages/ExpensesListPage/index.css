@@ -1,0 +1,40 @@
+.expense-page {
+    width: 95%;
+}
+.expense-page > .ant-card-body {
+    padding: 10px !important;
+}
+.margin-bottom-5 {
+    margin-bottom: 5px;
+}
+.margin-bottom-10 {
+    margin-bottom: 10px;
+}
+ิ.box-shodow {
+    box-shadow: 5px 5px 5px #f6f6f6;
+}
+.expenseList-Card {
+    margin-bottom: 10px !important;
+}
+.expenseList-Card > .ant-card-body {
+    padding: 10px !important;
+}
+.width100 {
+    width: 100%;
+}
+.height100 {
+    height: 100%;
+}
+.height-100 {
+    height: 100px;
+}
+.Col-member-Tag {
+    height: 35px;
+    padding: 1px;
+}
+.text-align-center {
+    text-align: center;
+}
+.member-Tag {
+    padding-top: 5px;
+}

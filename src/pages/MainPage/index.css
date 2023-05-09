@@ -1,0 +1,9 @@
+.navbar-box {
+    margin-bottom: 10px;
+}
+
+.content-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
