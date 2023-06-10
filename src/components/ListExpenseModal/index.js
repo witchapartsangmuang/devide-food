@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Button, Input, InputNumber, Modal, Typography, Tag } from 'antd'
-import css from './index.css'
+import { Col, Row, Input, InputNumber, Modal, Tag } from 'antd'
+import './index.css'
 import { addExpenseToList, updateExpenseToList } from '../../stores/features/ExpenseListSlice'
 
 const ListExpenseModal = (props) => {
@@ -17,7 +17,7 @@ const ListExpenseModal = (props) => {
     const selectAllMember = () => {
         setMemberSelectList([])
         const memberIdList = []
-        memberList.map((member, index) => {
+        memberList.map((member) => {
             memberIdList.push(member.key)
         })
         setMemberSelectList(memberIdList)
@@ -97,7 +97,7 @@ const ListExpenseModal = (props) => {
                 </Col>
                 {
                     memberList.map((member, index) => {
-                        if (memberSelectList.filter((memberId) => (memberId == member.key)).length === 0) {
+                        if (memberSelectList.filter((memberId) => (memberId === member.key)).length === 0) {
                             return (
                                 <Col key={index} span={8} className='padding-5 Col-member-Tag'>
                                     <Tag className='width100 height100 text-align-center member-Tag' bordered={true} color={member.color} onClick={() => { addMemberToEachExpense(member.key) }}>{member.name}</Tag>

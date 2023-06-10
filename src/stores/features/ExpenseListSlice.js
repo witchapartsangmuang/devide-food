@@ -8,10 +8,11 @@ export const ExpenseListSlice = createSlice({
     reducers: {
         addExpenseToList: (state, action) => {
             state.expenseList = [...state.expenseList, action.payload]
+            localStorage.setItem("expenseList", JSON.stringify(state.expenseList))
         },
         updateExpenseToList: (state, action) => {
             const updateState = []
-            const expenseObj = state.expenseList.map((expense, index) => {
+            state.expenseList.map((expense) => {
                 if (expense.expenseId === action.payload.expenseId) {
                     if (action.payload.memberSelectList.length > 0) {
                         updateState.push(action.payload)
@@ -21,10 +22,11 @@ export const ExpenseListSlice = createSlice({
                 }
             })
             state.expenseList = updateState
+            localStorage.setItem("expenseList", JSON.stringify(state.expenseList))
         },
         updateAfterRemoveMember: (state, action) => {
             const updateState = []
-            state.expenseList.map((expense, index) => {
+            state.expenseList.map((expense) => {
                 const expenseObj = {
                     expenseId: expense.expenseId,
                     expenseName: expense.expenseName,
@@ -34,11 +36,18 @@ export const ExpenseListSlice = createSlice({
                 updateState.push(expenseObj)
             })
             state.expenseList = updateState
+            localStorage.setItem("expenseList", JSON.stringify(state.expenseList))
         },
-        removeAllExpense: (state, action) => {
+        removeAllExpense: (state) => {
             state.expenseList = []
+            localStorage.setItem("expenseList", JSON.stringify(state.expenseList))
+        },
+        loadExpenseListLocalStorage: (state) => {
+            if (localStorage.getItem('expenseList') != null) {
+                state.expenseList = JSON.parse(localStorage.getItem('expenseList'))
+            }
         }
     }
 })
-export const { addExpenseToList, updateExpenseToList, updateAfterRemoveMember, removeAllExpense } = ExpenseListSlice.actions
+export const { addExpenseToList, updateExpenseToList, updateAfterRemoveMember, removeAllExpense, loadExpenseListLocalStorage } = ExpenseListSlice.actions
 export default ExpenseListSlice.reducer

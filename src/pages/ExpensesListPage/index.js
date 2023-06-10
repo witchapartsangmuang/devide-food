@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Button, Input, Modal, Typography, Tag } from 'antd'
-import css from './index.css'
+import { Card, Col, Row, Button, Typography, Tag } from 'antd'
+import './index.css'
 import ListExpenseModal from '../../components/ListExpenseModal'
 import DeleteModal from '../../components/DeleteModal'
-import { removeAllExpense } from '../../stores/features/ExpenseListSlice'
+import { removeAllExpense, loadExpenseListLocalStorage } from '../../stores/features/ExpenseListSlice'
 const ExpensesListPage = () => {
     const dispatch = useDispatch()
     const expenseList = useSelector((state) => state.expenseListManage.expenseList)
@@ -17,7 +17,7 @@ const ExpensesListPage = () => {
         onClickOpenExpenseModal()
     }
     const onClickOpenExpenseModal = () => {
-        if (isOpenExpenseModal == true) {
+        if (isOpenExpenseModal === true) {
             setIsOpenExpenseModal(false)
         } else {
             setIsOpenExpenseModal(true)
@@ -34,6 +34,9 @@ const ExpensesListPage = () => {
         dispatch(removeAllExpense())
         onClickOpenDeleteModal()
     }
+    useEffect(() => {
+        dispatch(loadExpenseListLocalStorage())
+    }, [])
     return (
         <Card className='expense-page'>
             {
@@ -91,7 +94,7 @@ const ExpensesListPage = () => {
                     danger
                     style={{ width: '100%', height: '45px' }}
                     onClick={() => { onClickOpenDeleteModal() }}
-                    disabled={ expenseList.length === 0 }
+                    disabled={expenseList.length === 0}
                 >
                     ล้างรายการทั้งหมด
                 </Button>

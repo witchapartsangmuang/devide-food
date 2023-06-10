@@ -7,15 +7,23 @@ export const MemberListSlice = createSlice({
   initialState,
   reducers: {
     addMemberToList: (state, action) => {
-        state.memberList = [...state.memberList, action.payload]
+      state.memberList = [...state.memberList, action.payload]
+      localStorage.setItem("memberList", JSON.stringify(state.memberList))
     },
     removeMemberFromList: (state, action) => {
-        state.memberList = action.payload
+      state.memberList = action.payload
+      localStorage.setItem("memberList", JSON.stringify(state.memberList))
     },
-    removeAllMemberFromList: (state, action) => {
+    removeAllMemberFromList: (state) => {
       state.memberList = []
-  },
+      localStorage.setItem("memberList", JSON.stringify(state.memberList))
+    },
+    loadMemberListLocalStorage: (state) => {
+      if (localStorage.getItem('memberList') != null) {
+        state.memberList = JSON.parse(localStorage.getItem('memberList'))
+      }
+    }
   }
 })
-export const { addMemberToList, removeMemberFromList, removeAllMemberFromList } = MemberListSlice.actions
+export const { addMemberToList, removeMemberFromList, removeAllMemberFromList, loadMemberListLocalStorage } = MemberListSlice.actions
 export default MemberListSlice.reducer

@@ -2,8 +2,8 @@ import NavBar from './../../components/NavBar/index.js'
 import MemberPage from '../MemberPage/index.js'
 import SummaryPage from '../SummaryPage/index.js'
 import ExpensesListPage from '../ExpensesListPage/index.js'
-import { useSelector, useDispatch } from 'react-redux'
-import css from './index.css'
+import { useSelector } from 'react-redux'
+import './index.css'
 const Main = () => {
   const activingNavbar = useSelector((state) => state.activeNavbar.activingNavbar)
   return (

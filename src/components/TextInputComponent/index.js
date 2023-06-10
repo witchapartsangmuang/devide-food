@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Card, Col, Row, Button, Input, Form, Radio } from 'antd'
-import css from './index.css'
+import React from 'react'
+import { Col, Row, Button, Input } from 'antd'
+import './index.css'
 const TextInputComponent = (props) => {
     const { value, placeholder, funcOnChange, funcOnClick, buttonLabel } = props
     return (

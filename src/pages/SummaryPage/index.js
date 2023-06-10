@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Button, Input, Modal, Typography, Tag } from 'antd'
-import css from './index.css'
+import { useSelector } from 'react-redux'
+import { Card, Col, Row, Typography, Tag } from 'antd'
+import './index.css'
 const SummaryPage = () => {
     const expenseList = useSelector((state) => state.expenseListManage.expenseList)
     const memberList = useSelector((state) => state.memberListManage.memberList)
     const [summary, SetSummary] = useState([])
     const testsum = []
     useEffect(() => {
-        memberList.map((member, index) => {
+        memberList.map((member) => {
             let priceEachMember = 0
             let expenseEachMember = []
-            expenseList.map((expense, index) => {
+            expenseList.map((expense) => {
                 const priceEachMemberForExpense = expense.expensePrice / expense.memberSelectList.length
                 if (expense.memberSelectList.filter((memberInExpense) => (memberInExpense === member.key)).length !== 0) {
                     expenseEachMember.push(expense.expenseId)

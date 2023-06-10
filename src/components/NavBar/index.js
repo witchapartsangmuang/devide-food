@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import css from '../NavBar/index.css'
+import React from 'react'
+import '../NavBar/index.css'
 import { Menu } from 'antd'
 import { setActivingNavbar } from '../../stores/features/activeNavbarSlice.js'
 import { useSelector, useDispatch } from 'react-redux'

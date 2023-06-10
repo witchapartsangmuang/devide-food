@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Card, Col, Row, Button, Input, Form, Radio, Tag } from 'antd'
+import { Card, Col, Row, Button, Tag } from 'antd'
 import TextInputComponent from '../../components/TextInputComponent'
-import { addMemberToList, removeMemberFromList, removeAllMemberFromList } from '../../stores/features/MemberListSlice'
+import { addMemberToList, removeMemberFromList, removeAllMemberFromList, loadMemberListLocalStorage } from '../../stores/features/MemberListSlice'
 import { updateAfterRemoveMember } from '../../stores/features/ExpenseListSlice'
 import DeleteModal from '../../components/DeleteModal'
-import css from './index.css'
+import './index.css'
 const MemberPage = () => {
     const dispatch = useDispatch()
     const memberList = useSelector((state) => state.memberListManage.memberList)
@@ -36,6 +36,9 @@ const MemberPage = () => {
         dispatch(removeAllMemberFromList())
         onClickOpenDeleteModal()
     }
+    useEffect(()=>{
+        dispatch(loadMemberListLocalStorage())
+    },[])
     return (
         <Card className='member-page'>
             {
